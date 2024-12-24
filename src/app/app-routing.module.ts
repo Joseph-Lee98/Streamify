@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MoviesComponent } from './movies/movies.component';
 import { AuthenticationformComponent } from './authenticationform/authenticationform.component';
+import { loggedOutGuard } from './logged-out.guard';
 
 const routes: Routes = [
   {path:'', component:MoviesComponent},
-  {path:'login', component:AuthenticationformComponent},
-  {path:'register', component:AuthenticationformComponent},
+  {path:'login', component:AuthenticationformComponent, canActivate: [loggedOutGuard]},
+  {path:'register', component:AuthenticationformComponent, canActivate:[loggedOutGuard]},
 ];
 
 @NgModule({
