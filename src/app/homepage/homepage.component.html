@@ -1,0 +1,17 @@
+<div class="central-container mx-auto my-5">
+    <p class="text-center text-muted" *ngIf="loading">Loading movies...</p>
+    <div class="movie-list" *ngIf="!loading">
+      <div class="movie" *ngFor="let movie of movies">
+        <div class="movie-content d-flex align-items-start">
+          <img [src]="movie.imageUrl" alt="{{ movie.title }}" class="movie-img me-3">
+          <div>
+            <h2 class="h5">{{ movie.title }}</h2>
+            <h3 class="h6 text-muted">Genre: {{ movie.genre }}</h3>
+            <p>{{ movie.description }}</p>
+            <p class="text-primary fw-bold">Rating: {{ movie.rating }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
