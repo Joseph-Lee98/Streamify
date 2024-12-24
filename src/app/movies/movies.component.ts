@@ -12,11 +12,16 @@ import { Movie } from '../model/Movie';
 export class MoviesComponent implements OnInit {
   movies: Movie[] = [];
   loading: boolean = true;
+  errorMessage: string = '';
   constructor(private moviesService: MoviesService) {}
   ngOnInit(): void {
     this.moviesService.getMovies().subscribe((data: Movie[]) => {
       this.movies = data;
       this.loading = false;
-    });
+    },
+  (error)=>{
+    this.loading = false;
+    this.errorMessage = "Failed to fetch movies. Please try again later."
+  });
   }
 }

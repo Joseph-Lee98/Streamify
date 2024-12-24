@@ -1,0 +1,332 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Die Hard",
+      "genre": "Action",
+      "description": "A New York cop battles terrorists who have taken hostages in an LA skyscraper.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/c/ca/Die_Hard_%281988_film%29_poster.jpg",
+      "rating": 8.2
+    },
+    {
+      "id": 2,
+      "title": "Mad Max: Fury Road",
+      "genre": "Action",
+      "description": "In a post-apocalyptic wasteland, Max teams up with Furiosa to escape a tyrannical warlord.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/6e/Mad_Max_Fury_Road.jpg",
+      "rating": 8.1
+    },
+    {
+      "id": 3,
+      "title": "The Dark Knight",
+      "genre": "Action",
+      "description": "Batman faces the Joker, a criminal mastermind who seeks to unleash chaos on Gotham City.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/1/1c/The_Dark_Knight_%282008_film%29.jpg",
+      "rating": 9
+    },
+    {
+      "id": 4,
+      "title": "John Wick",
+      "genre": "Action",
+      "description": "A retired hitman seeks vengeance against those who wronged him.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/9/98/John_Wick_TeaserPoster.jpg",
+      "rating": 7.4
+    },
+    {
+      "id": 5,
+      "title": "Gladiator",
+      "genre": "Action",
+      "description": "A Roman general seeks revenge against the emperor who betrayed him.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/f/fb/Gladiator_%282000_film_poster%29.png",
+      "rating": 8.5
+    },
+    {
+      "id": 6,
+      "title": "Terminator 2: Judgment Day",
+      "genre": "Action",
+      "description": "A cyborg protects the future savior of humanity from a deadly new terminator.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/85/Terminator2poster.jpg",
+      "rating": 8.6
+    },
+    {
+      "id": 7,
+      "title": "The Matrix",
+      "genre": "Action",
+      "description": "A computer hacker learns about the nature of his reality and joins a rebellion.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/c/c1/The_Matrix_Poster.jpg",
+      "rating": 8.7
+    },
+    {
+      "id": 8,
+      "title": "Inception",
+      "genre": "Action",
+      "description": "A thief steals secrets through dream-sharing technology.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg",
+      "rating": 8.8
+    },
+    {
+      "id": 9,
+      "title": "Black Panther",
+      "genre": "Action",
+      "description": "T'Challa, king of Wakanda, fights to save his nation and its people.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/d/d6/Black_Panther_%28film%29_poster.jpg",
+      "rating": 7.3
+    },
+    {
+      "id": 10,
+      "title": "The Avengers",
+      "genre": "Action",
+      "description": "Earth's mightiest heroes must work together to stop an alien invasion.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg",
+      "rating": 8
+    },
+    {
+      "id": 11,
+      "title": "Superbad",
+      "genre": "Comedy",
+      "description": "Two high school friends try to make the most of their last night before graduation.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/8b/Superbad_Poster.png",
+      "rating": 7.6
+    },
+    {
+      "id": 12,
+      "title": "The Hangover",
+      "genre": "Comedy",
+      "description": "A Las Vegas bachelor party goes awry when the groom goes missing.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/b/b9/Hangoverposter09.jpg",
+      "rating": 7.7
+    },
+    {
+      "id": 13,
+      "title": "Step Brothers",
+      "genre": "Comedy",
+      "description": "Two adult men must learn to coexist when their parents get married.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/d/d9/StepbrothersMP08.jpg",
+      "rating": 6.9
+    },
+    {
+      "id": 14,
+      "title": "Anchorman: The Legend of Ron Burgundy",
+      "genre": "Comedy",
+      "description": "A top-rated TV anchor struggles to adapt when a woman joins his team.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/64/Movie_poster_Anchorman_The_Legend_of_Ron_Burgundy.jpg",
+      "rating": 7.2
+    },
+    {
+      "id": 15,
+      "title": "Groundhog Day",
+      "genre": "Comedy",
+      "description": "A weatherman finds himself reliving the same day over and over again.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/b/b1/Groundhog_Day_%28movie_poster%29.jpg",
+      "rating": 8.1
+    },
+    {
+      "id": 16,
+      "title": "Mean Girls",
+      "genre": "Comedy",
+      "description": "A teenager navigates the complex social hierarchy of high school.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/ac/Mean_Girls_film_poster.png",
+      "rating": 7.1
+    },
+    {
+      "id": 17,
+      "title": "Dumb and Dumber",
+      "genre": "Comedy",
+      "description": "Two dim-witted friends embark on a cross-country road trip.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/64/Dumbanddumber.jpg",
+      "rating": 7.3
+    },
+    {
+      "id": 18,
+      "title": "Bridesmaids",
+      "genre": "Comedy",
+      "description": "A woman struggles with jealousy and self-doubt while helping her best friend plan a wedding.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/d/df/BridesmaidsPoster.jpg",
+      "rating": 6.8
+    },
+    {
+      "id": 19,
+      "title": "Monty Python and the Holy Grail",
+      "genre": "Comedy",
+      "description": "King Arthur and his knights embark on a comedic quest for the Holy Grail.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/0/08/Monty-Python-1975-poster.png",
+      "rating": 8.2
+    },
+    {
+      "id": 20,
+      "title": "The Grand Budapest Hotel",
+      "genre": "Comedy",
+      "description": "The adventures of a legendary concierge at a famous hotel in Europe.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/1/1c/The_Grand_Budapest_Hotel.png",
+      "rating": 8.1
+    },
+    {
+      "id": 21,
+      "title": "The Shawshank Redemption",
+      "genre": "Drama",
+      "description": "Two imprisoned men bond over several years, finding solace and eventual redemption through acts of decency.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg",
+      "rating": 9.3
+    },
+    {
+      "id": 22,
+      "title": "Forrest Gump",
+      "genre": "Drama",
+      "description": "The story of a slow-witted man who witnesses and influences several historical events in his life.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg",
+      "rating": 8.8
+    },
+    {
+      "id": 23,
+      "title": "The Godfather",
+      "genre": "Drama",
+      "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg",
+      "rating": 9.2
+    },
+    {
+      "id": 24,
+      "title": "12 Angry Men",
+      "genre": "Drama",
+      "description": "A jury deliberates the guilt or innocence of a defendant on the basis of reasonable doubt.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/12_Angry_Men_%281957_film_poster%29.jpg/440px-12_Angry_Men_%281957_film_poster%29.jpg",
+      "rating": 9
+    },
+    {
+      "id": 25,
+      "title": "Schindler's List",
+      "genre": "Drama",
+      "description": "The story of Oskar Schindler, who saved more than a thousand Jews during the Holocaust.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/3/38/Schindler%27s_List_movie.jpg",
+      "rating": 9
+    },
+    {
+      "id": 26,
+      "title": "Fight Club",
+      "genre": "Drama",
+      "description": "An insomniac office worker and a soap salesman form an underground fight club with surprising consequences.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/f/fc/Fight_Club_poster.jpg",
+      "rating": 8.8
+    },
+    {
+      "id": 27,
+      "title": "The Pursuit of Happyness",
+      "genre": "Drama",
+      "description": "A struggling salesman takes custody of his son as he’s poised to begin a life-changing professional endeavor.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/81/Poster-pursuithappyness.jpg",
+      "rating": 8
+    },
+    {
+      "id": 28,
+      "title": "Good Will Hunting",
+      "genre": "Drama",
+      "description": "A young janitor at MIT has a gift for mathematics but needs help from a therapist to find direction in his life.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/52/Good_Will_Hunting.png",
+      "rating": 8.3
+    },
+    {
+      "id": 29,
+      "title": "A Beautiful Mind",
+      "genre": "Drama",
+      "description": "The story of John Nash, a brilliant but asocial mathematician, and his struggles with mental illness.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/b/b8/A_Beautiful_Mind_Poster.jpg",
+      "rating": 8.2
+    },
+    {
+      "id": 30,
+      "title": "The Green Mile",
+      "genre": "Drama",
+      "description": "The lives of guards on Death Row are affected by one of their charges: a man accused of murder, but who has a mysterious gift.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/e/e2/The_Green_Mile_%28movie_poster%29.jpg",
+      "rating": 8.6
+    },
+    {
+      "id": 31,
+      "title": "The Shining",
+      "genre": "Horror",
+      "description": "A family heads to an isolated hotel for the winter, where an evil presence influences the father into violence.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/1/1d/The_Shining_%281980%29_U.K._release_poster_-_The_tide_of_terror_that_swept_America_IS_HERE.jpg",
+      "rating": 8.4
+    },
+    {
+      "id": 32,
+      "title": "Get Out",
+      "genre": "Horror",
+      "description": "A young African-American man uncovers disturbing secrets when he visits his white girlfriend's family estate.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/a3/Get_Out_poster.png",
+      "rating": 7.7
+    },
+    {
+      "id": 33,
+      "title": "A Nightmare on Elm Street",
+      "genre": "Horror",
+      "description": "Teenagers are stalked and killed in their dreams by the vengeful Freddy Krueger.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/f/fa/A_Nightmare_on_Elm_Street_%281984%29_theatrical_poster.jpg",
+      "rating": 7.5
+    },
+    {
+      "id": 34,
+      "title": "Hereditary",
+      "genre": "Horror",
+      "description": "A family unravels terrifying secrets about their ancestry after the death of their secretive grandmother.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/d/d9/Hereditary.png",
+      "rating": 7.3
+    },
+    {
+      "id": 35,
+      "title": "The Exorcist",
+      "genre": "Horror",
+      "description": "A young girl is possessed by a mysterious entity, leading to a battle between good and evil.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/7b/Exorcist_ver2.jpg",
+      "rating": 8.1
+    },
+    {
+      "id": 36,
+      "title": "Halloween",
+      "genre": "Horror",
+      "description": "Fifteen years after murdering his sister, Michael Myers escapes from an asylum and returns to his hometown.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/af/Halloween_%281978%29_theatrical_poster.jpg",
+      "rating": 7.7
+    },
+    {
+      "id": 37,
+      "title": "It",
+      "genre": "Horror",
+      "description": "A group of kids face their fears to battle an evil entity that takes the form of a clown.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/5a/It_%282017%29_poster.jpg",
+      "rating": 7.4
+    },
+    {
+      "id": 38,
+      "title": "Scream",
+      "genre": "Horror",
+      "description": "A masked killer terrorizes a small town, targeting a group of high school students.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/86/Scream_%281996_film%29_poster.jpg",
+      "rating": 7.2
+    },
+    {
+      "id": 39,
+      "title": "The Babadook",
+      "genre": "Horror",
+      "description": "A single mother and her son are haunted by a sinister presence from a mysterious book.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/d/d7/The-Babadook-Poster.jpg",
+      "rating": 6.9
+    },
+    {
+      "id": 40,
+      "title": "The Conjuring",
+      "genre": "Horror",
+      "description": "Paranormal investigators work to help a family terrorized by a dark presence in their farmhouse.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/8c/The_Conjuring_poster.jpg",
+      "rating": 7.5
+    }
+  ],
+  "users": [
+    {
+      "id": 1735069367585,
+      "username": "joseph",
+      "password": "j0seph",
+      "movies": []
+    }
+  ]
+}

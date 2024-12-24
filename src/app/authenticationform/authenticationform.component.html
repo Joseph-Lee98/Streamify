@@ -1,6 +1,6 @@
 <div>
     <h3>{{isLoginForm ? "Log into your account:" : "Register for an account:"}}</h3>
-    <form (ngSubmit)="onSubmit()">
+    <form [formGroup]="authenticationForm" (ngSubmit)="onSubmit()">
         <div class="mb-3">
             <label class="form-label">
                 Username
@@ -11,8 +11,10 @@
             <label class="form-label">
                 Password
             </label>
-            <input type="password" class="form-control" formControlName="username">
+            <input type="password" class="form-control" formControlName="password">
         </div>
         <button class="btn btn-primary" type="submit" [disabled]="authenticationForm.invalid">{{isLoginForm?"Login":"Register"}}</button>
+        <p class="text-center text-muted" *ngIf="loading">{{isLoginForm ? "Logging in..." : "Registering account..."}}</p>
+        <p class="text-center text-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
     </form>
 </div>
