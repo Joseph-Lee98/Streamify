@@ -18,10 +18,10 @@
             <a class="nav-link" routerLinkActive="active" routerLink="">Home</a>
           </li>
           <li class="nav-item" *ngIf="!isLoggedIn">
-            <a class="nav-link" href="#">Login</a>
+            <a class="nav-link" routerLinkActive="active" routerLink="/login">Login</a>
           </li>
           <li class="nav-item" *ngIf="!isLoggedIn">
-            <a class="nav-link" href="#">Register</a>
+            <a class="nav-link" routerLinkActive="active" routerLink="/register">Register</a>
           </li>
           <li class="nav-item" *ngIf="isLoggedIn">
             <a class="nav-link" href="#">Favourites</a>
