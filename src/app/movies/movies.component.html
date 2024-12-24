@@ -1,5 +1,6 @@
 
     <p class="text-center text-muted" *ngIf="loading">Loading movies...</p>
+    <p class="text-center text-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
     <div class="movie-list" *ngIf="!loading">
       <div class="movie" *ngFor="let movie of movies">
         <div class="movie-content d-flex align-items-start">

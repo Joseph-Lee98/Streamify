@@ -1,0 +1,48 @@
+<div>
+    <h3>{{isLoginForm ? "Log into your account:" : "Register for an account:"}}</h3>
+    <form [formGroup]="authenticationForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label class="form-label">
+                Username
+            </label>
+            <input type="text" class="form-control" formControlName="username">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">
+                Password
+            </label>
+            <input type="password" class="form-control" formControlName="password">
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="authenticationForm.invalid">{{isLoginForm?"Login":"Register"}}</button>
+        <p class="text-center text-muted" *ngIf="loading">{{isLoginForm ? "Logging in..." : "Registering account..."}}</p>
+        <small class="text-center text-danger" *ngIf="errorMessage">{{ errorMessage }}</small>
+        <div *ngIf="authenticationForm.get('username')?.invalid && authenticationForm.get('username')?.touched">
+            <small *ngIf="authenticationForm.get('username')?.errors?.['required']" class="text-danger">
+              Username is required.
+            </small>
+            <small *ngIf="authenticationForm.get('username')?.errors?.['minlength']" class="text-danger">
+              Username must be at least 3 characters long.
+            </small>
+            <small *ngIf="authenticationForm.get('username')?.errors?.['maxlength']" class="text-danger">
+              Username cannot exceed 20 characters.
+            </small>
+            <small *ngIf="authenticationForm.get('username')?.errors?.['pattern']" class="text-danger">
+              Username can only contain letters, numbers, dots, and underscores.
+            </small>
+          </div>
+          
+          <div *ngIf="authenticationForm.get('password')?.invalid && authenticationForm.get('password')?.touched">
+            <small *ngIf="authenticationForm.get('password')?.errors?.['required']" class="text-danger">
+              Password is required.
+            </small>
+            <small *ngIf="authenticationForm.get('password')?.errors?.['minlength']" class="text-danger">
+              Password must be at least 8 characters long.
+            </small>
+            <small *ngIf="authenticationForm.get('password')?.errors?.['pattern']" class="text-danger">
+              Password must include an uppercase letter, a lowercase letter, and a number.
+            </small>
+          </div>
+          
+          
+    </form>
+</div>
