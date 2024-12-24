@@ -8,9 +8,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  // isLoggedIn(): boolean {
-  //   return localStorage.getItem('username') !== null;
-  // }
+
 
   constructor(public authService: AuthService){}
 
@@ -20,7 +18,6 @@ export class NavbarComponent {
 
   logout(): void {
     localStorage.removeItem('username');
-    alert('You have been logged out.');
   }
 }
 
