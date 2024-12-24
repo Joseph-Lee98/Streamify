@@ -22,35 +22,33 @@ export class AuthenticationformComponent implements OnInit {
   ngOnInit(): void {
     this.isLoginForm = this.router.url === '/login'
     this.authenticationForm = this.formBuilder.group({
-      username: ['',Validators.required],
-      password: ['',Validators.required]
+      username: ['',[Validators.required,Validators.minLength(3),Validators.maxLength(20),Validators.pattern(/^[a-zA-Z0-9._]+$/)]],
+      password: ['',[Validators.required,Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/)]]
     })
   }
 
   onSubmit(): void {
     if (this.authenticationForm.valid) {
-      const {username,password} = this.authenticationForm.value
+      const { username, password } = this.authenticationForm.value;
       this.loading = true;
-      this.errorMessage = ''
-      if(this.isLoginForm){
-        this.authService.loginUser(username,password).subscribe(()=>{
-          localStorage.setItem("username",username);
-          this.loading=false
-          this.router.navigate([''])
-        },(error)=>{
+      this.errorMessage = '';
+  
+      const observer = {
+        next: (response: any) => {
+          localStorage.setItem('username', username);
           this.loading = false;
-          this.errorMessage = error.error.message || 'An unexpected error occurred during login.';
-        })
-      }
-      else{
-        this.authService.registerUser(username,password).subscribe(()=>{
-          localStorage.setItem("username",username)
-          this.loading=false
-          this.router.navigate([''])
-        },(error)=>{
-              this.loading = false;
-          this.errorMessage = error.error.message || 'An unexpected error occurred during login.';
-        })
+          this.router.navigate(['']);
+        },
+        error: (error: any) => {
+          this.loading = false;
+          this.errorMessage = error.error.message || 'An unexpected error occurred.';
+        },
+      };
+  
+      if (this.isLoginForm) {
+        this.authService.loginUser(username, password).subscribe(observer);
+      } else {
+        this.authService.registerUser(username, password).subscribe(observer);
       }
     } else {
       alert('Please fill out all required fields.');
