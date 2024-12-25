@@ -10,9 +10,11 @@ import { Movie } from '../model/Movie';
 })
 export class MoviesComponent implements OnInit {
   movies: Movie[] = [];
-  filteredMovies: Movie[] = [...this.movies]
+  tailoredMovies: Movie[] = [...this.movies]
   genres = ['Action','Comedy','Drama','Horror']
   selectedGenre: string = ''
+  sortBy: string = 'title'
+  sortByDirection: string = 'ascending'
   loading: boolean = true;
   errorMessage: string = '';
 
@@ -21,9 +23,8 @@ export class MoviesComponent implements OnInit {
   ngOnInit(): void {
     this.moviesService.getMovies().subscribe({
       next: (data: Movie[]) => {
-        console.log(data)
         this.movies = data
-        this.filteredMovies = [...this.movies]
+        this.tailoredMovies = [...this.movies].sort((a,b)=>a.title.localeCompare(b.title))
         this.loading = false;
       },
       error: (error) => {
@@ -33,12 +34,16 @@ export class MoviesComponent implements OnInit {
     });
   }
 
-  filterMovies():void{
+  tailorMovies():void{
     if(this.selectedGenre){
-      this.filteredMovies = this.movies.filter(movie => movie.genre===this.selectedGenre)
+      this.tailoredMovies = this.movies.filter((movie) => movie.genre === this.selectedGenre);
     }
     else{
-      this.filteredMovies = [...this.movies]
+      this.tailoredMovies=this.movies
     }
+    this.tailoredMovies = [...this.tailoredMovies].sort((a,b)=>{
+      const comparison = this.sortBy==='title'?a.title.localeCompare(b.title):a.rating-b.rating;
+      return this.sortByDirection==='ascending'?comparison:-comparison
+    })
   }
 }
