@@ -1,8 +1,16 @@
-
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <label for="genreFilter" class="me-2">Filter by Genre:</label>
+        <select id="genreFilter" class="form-select" [(ngModel)]="selectedGenre" (change)="filterMovies()">
+          <option value="">All genres</option>
+          <option *ngFor="let genre of genres" [value]="genre">{{genre}}</option>
+        </select>
+      </div>
+    </div>
     <p class="text-center text-muted" *ngIf="loading">Loading movies...</p>
     <p class="text-center text-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
     <div class="movie-list" *ngIf="!loading">
-      <div class="movie" *ngFor="let movie of movies">
+      <div class="movie" *ngFor="let movie of filteredMovies">
         <div class="movie-content d-flex align-items-start">
           <img [src]="movie.imageUrl" alt="{{ movie.title }}" class="movie-img me-3">
           <div>

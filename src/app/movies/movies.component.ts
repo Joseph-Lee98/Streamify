@@ -10,6 +10,9 @@ import { Movie } from '../model/Movie';
 })
 export class MoviesComponent implements OnInit {
   movies: Movie[] = [];
+  filteredMovies: Movie[] = [...this.movies]
+  genres = ['Action','Comedy','Drama','Horror']
+  selectedGenre: string = ''
   loading: boolean = true;
   errorMessage: string = '';
 
@@ -18,7 +21,9 @@ export class MoviesComponent implements OnInit {
   ngOnInit(): void {
     this.moviesService.getMovies().subscribe({
       next: (data: Movie[]) => {
-        this.movies = data;
+        console.log(data)
+        this.movies = data
+        this.filteredMovies = [...this.movies]
         this.loading = false;
       },
       error: (error) => {
@@ -26,5 +31,14 @@ export class MoviesComponent implements OnInit {
         this.errorMessage = 'Failed to fetch movies. Please try again later.';
       },
     });
+  }
+
+  filterMovies():void{
+    if(this.selectedGenre){
+      this.filteredMovies = this.movies.filter(movie => movie.genre===this.selectedGenre)
+    }
+    else{
+      this.filteredMovies = [...this.movies]
+    }
   }
 }
