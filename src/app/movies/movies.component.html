@@ -24,14 +24,15 @@
     <p class="text-center text-muted" *ngIf="loading">Loading movies...</p>
     <p class="text-center text-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
     <div class="movie-list" *ngIf="!loading">
-      <div class="movie" *ngFor="let movie of tailoredMovies">
-        <div class="movie-content d-flex align-items-start">
-          <img [src]="movie.imageUrl" alt="{{ movie.title }}" class="movie-img me-3">
-          <div>
-            <h2 class="h5">{{ movie.title }}</h2>
-            <h3 class="h6 text-muted">Genre: {{ movie.genre }}</h3>
-            <p>{{ movie.description }}</p>
-            <p class="text-primary fw-bold">Rating: {{ movie.rating }}</p>
+      <div class="movie d-flex align-items-start" *ngFor="let movie of tailoredMovies">
+        <img [src]="movie.imageUrl" alt="{{ movie.title }}" class="movie-img me-3">
+        <div class="movie-content">
+          <h2 class="h5">{{ movie.title }}</h2>
+          <h3 class="h6 text-muted">Genre: {{ movie.genre }}</h3>
+          <p>{{ movie.description }}</p>
+          <div class="movie-footer d-flex justify-content-between align-items-center">
+            <p class="text-primary fw-bold m-0">Rating: {{ movie.rating }}</p>
+            <button class="btn btn-primary btn-sm">Add to Favourites</button>
           </div>
         </div>
       </div>
