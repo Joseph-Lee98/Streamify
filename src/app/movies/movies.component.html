@@ -32,7 +32,7 @@
           <p>{{ movie.description }}</p>
           <div class="movie-footer d-flex justify-content-between align-items-center">
             <p class="text-primary fw-bold m-0">Rating: {{ movie.rating }}</p>
-            <button class="btn btn-primary btn-sm">Add to Favourites</button>
+            <button *ngIf="isLoggedIn" class="btn btn-primary btn-sm">Add to Favourites</button>
           </div>
         </div>
       </div>

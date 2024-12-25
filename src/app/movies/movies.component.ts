@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../movies.service';
+import { AuthService } from '../auth.service';
 import { Movie } from '../model/Movie';
 
 @Component({
@@ -18,7 +19,7 @@ export class MoviesComponent implements OnInit {
   loading: boolean = true;
   errorMessage: string = '';
 
-  constructor(private moviesService: MoviesService) {}
+  constructor(private moviesService: MoviesService,public authService: AuthService) {}
 
   ngOnInit(): void {
     this.moviesService.getMovies().subscribe({
@@ -32,6 +33,10 @@ export class MoviesComponent implements OnInit {
         this.errorMessage = 'Failed to fetch movies. Please try again later.';
       },
     });
+  }
+
+  get isLoggedIn():boolean{
+    return this.authService.isLoggedIn()
   }
 
   tailorMovies():void{
