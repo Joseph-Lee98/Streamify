@@ -17,7 +17,7 @@ export class NavbarComponent {
   }
 
   logout(): void {
-    localStorage.removeItem('username');
+    localStorage.removeItem('user');
   }
 }
 

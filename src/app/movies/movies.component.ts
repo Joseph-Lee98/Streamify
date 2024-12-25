@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../movies.service';
 import { AuthService } from '../auth.service';
 import { Movie } from '../model/Movie';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-movies',
@@ -18,14 +19,22 @@ export class MoviesComponent implements OnInit {
   sortByDirection: string = 'ascending'
   loading: boolean = true;
   errorMessage: string = '';
+  isFavourites: boolean = false;
 
-  constructor(private moviesService: MoviesService,public authService: AuthService) {}
+  constructor(private router: Router,private moviesService: MoviesService,public authService: AuthService) {}
 
   ngOnInit(): void {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.isFavourites = this.router.url === '/favourites'
     this.moviesService.getMovies().subscribe({
       next: (data: Movie[]) => {
         this.movies = data
-        this.tailoredMovies = [...this.movies].sort((a,b)=>a.title.localeCompare(b.title))
+        if(!this.isFavourites){
+          this.tailoredMovies = [...this.movies].sort((a,b)=>a.title.localeCompare(b.title))
+        }
+        else{
+          this.tailoredMovies = [...this.movies].sort((a,b)=>a.title.localeCompare(b.title)).filter(movie=>user?.movies.includes(movie.id))
+        }
         this.loading = false;
       },
       error: (error) => {

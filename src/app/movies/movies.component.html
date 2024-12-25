@@ -23,7 +23,7 @@
     </div>
     <p class="text-center text-muted" *ngIf="loading">Loading movies...</p>
     <p class="text-center text-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
-    <div class="movie-list" *ngIf="!loading">
+    <div class="movie-list" *ngIf="!loading&&tailoredMovies.length>0">
       <div class="movie d-flex align-items-start" *ngFor="let movie of tailoredMovies">
         <img [src]="movie.imageUrl" alt="{{ movie.title }}" class="movie-img me-3">
         <div class="movie-content">
@@ -37,5 +37,6 @@
         </div>
       </div>
     </div>
+    <p class="text-center text-muted" *ngIf="!loading&&tailoredMovies.length===0">No movies to display.</p>
   
   

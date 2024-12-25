@@ -12,7 +12,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   isLoggedIn(): boolean {
-    return localStorage.getItem('username') !== null;
+    return localStorage.getItem('user') !== null;
   }
 
   loginUser(username: string, password: string): Observable<any> {
