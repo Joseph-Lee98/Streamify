@@ -7,11 +7,11 @@ export const loggedOutGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
   if (!authService.isLoggedIn()) {
-    return true; // Allow access
+    return true; 
   } else {
-    router.navigate(['/']); // Redirect to home
+    router.navigate(['/']); 
     alert('You are already logged in.');
-    return false; // Deny access
+    return false; 
   }
 };
 
