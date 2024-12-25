@@ -60,4 +60,16 @@ export class MoviesComponent implements OnInit {
       return this.sortByDirection==='ascending'?comparison:-comparison
     })
   }
+
+  addToFavourites(id:number):void{
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    user.movies.push(id);
+    localStorage.setItem("user",JSON.stringify(user));
+  }
+
+  isMovieInFavourites(id:number):boolean{
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    console.log(user)
+    return user?.movies?.includes(id)
+  }
 }
