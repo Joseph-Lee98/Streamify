@@ -1,59 +1,11 @@
-# Streamify
+After cloning this repo to your computer, navigate to this repo in your CLI and please make sure to run "npm i" to install dependancies. After this, (assuming you are using vs code as this is what I have used) create a new terminal and in this terminal run "node server.js" to run the server.js file. Go back to the first terminal, and then run "ng serve" to open a link to the web app on your local device.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.5.
+Upon loading the website, you will be able to view a list of movies. Feel free to filter and sort these movies. Should you wish to gain access to your personalised list of favourite movies, go to the register page in the navigation bar. When selecting a username, the username must be between 3 and 20 characters, and can only contain letters, numbers, dots and underscores. When selecting a password, the password must be at least 8 characters long, and the password must contain an uppercase letter, a lowercase letter and a number.
 
-## Development server
+On homepage, you will now be able to add movies to your favourites. To view your list of favourite movies, navigate to the favourites page. Here, you can also remove movies from your favourites. 
 
-To start a local development server, run:
+Local storage means you will stay logged in even if you close down the app and load it back up again, and still retain access to the favourites list you created.
 
-```bash
-ng serve
-```
+Should you log out, you can log back in using the login page, and the favourites list you created can still be accessed as the movies.json file is kept up-to-date through http requests when you add and remove movies from your favourites list.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+If there is issues with not being able to retain the favourites list when logging out of an account and logging back in, please try restarting both running the server.js file and deploying the web app on the two terminals. I have had issues with retaining the list of favourite movies upon logging out and back into an account, sometimes access is retained and sometimes not, I haven't been able to fully understand why.
