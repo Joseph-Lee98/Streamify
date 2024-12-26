@@ -321,30 +321,5 @@
       "rating": 7.5
     }
   ],
-  "users": [
-    {
-      "id": 1735078711886,
-      "username": "joseph",
-      "password": "J0sephhoe",
-      "movies": [
-        1,
-        32
-      ]
-    },
-    {
-      "id": 1735227918018,
-      "username": "cccccc",
-      "password": "C1cccccc",
-      "movies": []
-    },
-    {
-      "id": 1735231968947,
-      "username": "testing",
-      "password": "Testing123",
-      "movies": [
-        24,
-        9
-      ]
-    }
-  ]
+  "users": []
 }
