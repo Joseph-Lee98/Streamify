@@ -35,7 +35,7 @@ export class AuthenticationformComponent implements OnInit {
   
       const observer = {
         next: (response: any) => {
-          localStorage.setItem('username', username);
+          localStorage.setItem('user', JSON.stringify(response.user));
           this.loading = false;
           this.router.navigate(['']);
         },

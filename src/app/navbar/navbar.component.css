@@ -16,3 +16,7 @@
     background-color: transparent; 
     margin: 0; 
   }
+
+.logout:hover{
+  cursor: pointer;
+}
