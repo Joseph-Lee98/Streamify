@@ -33,6 +33,7 @@ export class MoviesComponent implements OnInit {
           this.tailoredMovies = [...this.movies].sort((a,b)=>a.title.localeCompare(b.title))
         }
         else{
+          this.movies=this.movies.filter(movie=>user?.movies.includes(movie.id))
           this.tailoredMovies = [...this.movies].sort((a,b)=>a.title.localeCompare(b.title)).filter(movie=>user?.movies.includes(movie.id))
         }
         this.loading = false;
@@ -69,7 +70,15 @@ export class MoviesComponent implements OnInit {
 
   isMovieInFavourites(id:number):boolean{
     const user = JSON.parse(localStorage.getItem('user') || '{}');
-    console.log(user)
     return user?.movies?.includes(id)
+  }
+
+  removeFromFavourites(id:number):void{
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const index = user?.movies?.findIndex((movieId:number)=>movieId===id);
+    user?.movies?.splice(index,1)
+    localStorage.setItem("user",JSON.stringify(user))
+    this.tailoredMovies = this.tailoredMovies.filter(movie=>movie.id!==id)
+    this.movies = this.movies.filter(movie=>movie.id!==id)
   }
 }

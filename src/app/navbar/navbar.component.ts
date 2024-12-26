@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ import { AuthService } from '../auth.service';
 export class NavbarComponent {
 
 
-  constructor(public authService: AuthService){}
+  constructor(private router: Router,public authService: AuthService){}
 
   get isLoggedIn():boolean{
     return this.authService.isLoggedIn()
@@ -18,6 +19,7 @@ export class NavbarComponent {
 
   logout(): void {
     localStorage.removeItem('user');
+    this.router.navigate(['']);
   }
 }
 
