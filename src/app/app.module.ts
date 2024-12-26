@@ -8,9 +8,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AuthenticationformComponent } from './authenticationform/authenticationform.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
-  declarations: [AppComponent, MoviesComponent, NavbarComponent, AuthenticationformComponent],
+  declarations: [AppComponent, MoviesComponent, NavbarComponent, AuthenticationformComponent, PagenotfoundComponent],
   imports: [BrowserModule, AppRoutingModule,FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
