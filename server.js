@@ -34,12 +34,13 @@ server.post('/register',(req,res)=>{
 server.put('/users/:id', (req, res) => {
   const { id } = req.params;
   const updatedUser = req.body;
-  const users = router.db.get('users');
-  const index = users.findIndex((user) => user.id === parseInt(id));
-  if (index !== -1) {
-    users[index] = updatedUser;
-    router.db.get('users').write();
-    res.status(200).json(updatedUser);
+  const users = router.db.get('users').value();
+  const userIndex = users.findIndex((user) => user.id === parseInt(id));
+
+  if (userIndex !== -1) {
+    users[userIndex] = { ...users[userIndex], ...updatedUser };
+    router.db.set('users', users).write(); 
+    res.status(200).json(users[userIndex]);
   } else {
     res.status(404).json({ error: 'User not found' });
   }
