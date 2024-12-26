@@ -32,24 +32,22 @@ export class AuthenticationformComponent implements OnInit {
       const { username, password } = this.authenticationForm.value;
       this.loading = true;
       this.errorMessage = '';
-  
-      const observer = {
-        next: (response: any) => {
-          localStorage.setItem('user', JSON.stringify(response.user));
+
+      const authObservable = this.isLoginForm
+        ? this.authService.loginUser(username, password)
+        : this.authService.registerUser(username, password);
+
+      authObservable.subscribe({
+        next: () => {
           this.loading = false;
-          this.router.navigate(['']);
+          this.router.navigate(['']); 
         },
         error: (error: any) => {
           this.loading = false;
-          this.errorMessage = error.error.message || 'An unexpected error occurred.';
+          this.errorMessage =
+            error.error.message || 'An unexpected error occurred.';
         },
-      };
-  
-      if (this.isLoginForm) {
-        this.authService.loginUser(username, password).subscribe(observer);
-      } else {
-        this.authService.registerUser(username, password).subscribe(observer);
-      }
+      });
     } else {
       alert('Please fill out all required fields.');
     }

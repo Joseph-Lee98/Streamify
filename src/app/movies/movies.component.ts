@@ -1,8 +1,10 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../movies.service';
 import { AuthService } from '../auth.service';
 import { Movie } from '../model/Movie';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movies',
@@ -12,30 +14,28 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class MoviesComponent implements OnInit {
   movies: Movie[] = [];
-  tailoredMovies: Movie[] = [...this.movies]
-  genres = ['Action','Comedy','Drama','Horror']
-  selectedGenre: string = ''
-  sortBy: string = 'title'
-  sortByDirection: string = 'ascending'
+  tailoredMovies: Movie[] = [...this.movies];
+  genres = ['Action', 'Comedy', 'Drama', 'Horror'];
+  selectedGenre: string = '';
+  sortBy: string = 'title';
+  sortByDirection: string = 'ascending';
   loading: boolean = true;
   errorMessage: string = '';
   isFavourites: boolean = false;
 
-  constructor(private router: Router,private moviesService: MoviesService,public authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private moviesService: MoviesService,
+    public authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    this.isFavourites = this.router.url === '/favourites'
+    this.isFavourites = this.router.url === '/favourites';
+
     this.moviesService.getMovies().subscribe({
       next: (data: Movie[]) => {
-        this.movies = data
-        if(!this.isFavourites){
-          this.tailoredMovies = [...this.movies].sort((a,b)=>a.title.localeCompare(b.title))
-        }
-        else{
-          this.movies=this.movies.filter(movie=>user?.movies.includes(movie.id))
-          this.tailoredMovies = [...this.movies].sort((a,b)=>a.title.localeCompare(b.title)).filter(movie=>user?.movies.includes(movie.id))
-        }
+        this.movies = data;
+        this.tailorMovies(); 
         this.loading = false;
       },
       error: (error) => {
@@ -45,40 +45,77 @@ export class MoviesComponent implements OnInit {
     });
   }
 
-  get isLoggedIn():boolean{
-    return this.authService.isLoggedIn()
+  get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
   }
 
-  tailorMovies():void{
-    if(this.selectedGenre){
-      this.tailoredMovies = this.movies.filter((movie) => movie.genre === this.selectedGenre);
+  tailorMovies(): void {
+    let filteredMovies = [...this.movies];
+
+    if (this.selectedGenre) {
+      filteredMovies = filteredMovies.filter(
+        (movie) => movie.genre === this.selectedGenre
+      );
     }
-    else{
-      this.tailoredMovies=this.movies
+
+    if (this.isFavourites) {
+      const currentUser = this.authService.currentUserSubject.value;
+      if (currentUser) {
+        filteredMovies = filteredMovies.filter((movie) =>
+          currentUser.movies.includes(movie.id)
+        );
+      }
     }
-    this.tailoredMovies = [...this.tailoredMovies].sort((a,b)=>{
-      const comparison = this.sortBy==='title'?a.title.localeCompare(b.title):a.rating-b.rating;
-      return this.sortByDirection==='ascending'?comparison:-comparison
-    })
+
+    this.tailoredMovies = filteredMovies.sort((a, b) => {
+      const comparison =
+        this.sortBy === 'title'
+          ? a.title.localeCompare(b.title)
+          : a.rating - b.rating;
+      return this.sortByDirection === 'ascending' ? comparison : -comparison;
+    });
   }
 
-  addToFavourites(id:number):void{
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    user.movies.push(id);
-    localStorage.setItem("user",JSON.stringify(user));
+
+
+  addToFavourites(id: number): void {
+    const currentUser = this.authService.currentUserSubject.value;
+    if (currentUser) {
+      if (!currentUser.movies.includes(id)) {
+        currentUser.movies.push(id);
+        this.authService.updateUserData(currentUser).subscribe({
+          next: () => {
+            this.authService.currentUserSubject.next(currentUser);
+          },
+          error: (error) => {
+            console.error('Failed to update favourites:', error);
+          },
+        });
+      }
+    }
   }
 
-  isMovieInFavourites(id:number):boolean{
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user?.movies?.includes(id)
+  isMovieInFavourites(id: number): boolean {
+    const currentUser = this.authService.currentUserSubject.value;
+    return currentUser?.movies?.includes(id) ?? false;
   }
 
-  removeFromFavourites(id:number):void{
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    const index = user?.movies?.findIndex((movieId:number)=>movieId===id);
-    user?.movies?.splice(index,1)
-    localStorage.setItem("user",JSON.stringify(user))
-    this.tailoredMovies = this.tailoredMovies.filter(movie=>movie.id!==id)
-    this.movies = this.movies.filter(movie=>movie.id!==id)
+  removeFromFavourites(id: number): void {
+    const currentUser = this.authService.currentUserSubject.value;
+    if (currentUser) {
+      const index = currentUser.movies.indexOf(id);
+      if (index !== -1) {
+        currentUser.movies.splice(index, 1);
+        this.authService.updateUserData(currentUser).subscribe({
+          next: () => {
+            this.authService.currentUserSubject.next(currentUser);
+          },
+          error: (error) => {
+            console.error('Failed to update favourites:', error);
+          },
+        });
+        this.tailoredMovies = this.tailoredMovies.filter((movie) => movie.id !== id);
+      }
+    }
   }
 }
